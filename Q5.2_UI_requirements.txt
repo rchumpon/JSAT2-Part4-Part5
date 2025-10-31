@@ -1,0 +1,18 @@
+
+List all  UI requirements below:
+
+1.	Create a JavaScript array to maintain a list of movie objects.
+2.	build a web-based UI to manage the movie list using HTML, CSS and JavaScript.
+3.	Add Movie Section: Inputs for Movie ID, Title, Year, Rating, and Submit button.
+4.	The “Add Movie” section must validate inputs to ensure Movie ID and Title are entered before adding.
+5.	The UI must include a “Display Movie List” section showing all movies currently stored in the array.
+6.	A Refresh button must be provided to reload and display the current movie list.
+7.	The UI must include sorting features: Sort A-Z (Title ascending), Sort Z-A (Title descending), and Best Movies (by Rating, highest to lowest).
+8.	The UI must include a “Search Movie” section allowing search by Movie ID.
+9.	When searching by ID, the system must display either the matching movie details or “0” result if not found.
+10.	The UI must also support search by Title filtering the movie list as the user types.
+11.	The UI must provide consistent styling and theme for a good user experience.
+12. The system must include testing for both the UI and JavaScript functions to ensure expected behavior.
+	
+
+
