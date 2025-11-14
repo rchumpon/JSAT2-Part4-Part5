@@ -1,0 +1,16 @@
+Q5.7 Create the theme for your UI. Record the colours and font below
+
+<Colour 1 >
+Background: #aca793
+
+<Colour 2>
+Card background: #0f1724
+
+<Colour 3>
+Button: #5f7380 
+Button hover: #444444
+<Font>
+
+h1: #06b6d4
+h2, h3: #444444
+p: #e67e22, #06b6d4, #ffffff
