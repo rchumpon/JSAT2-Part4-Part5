@@ -1,0 +1,9 @@
+Q5.3 What are the HTML guideline documents that are to be followed? List the filename or URL of the guidelines. Describe the guidelines you are following (at least 1 paragraph)
+
+<HTML guideline / file name or URL>
+HTML & CSS: https://www.w3schools.com/html/html5_syntax.asp
+JavaScript: https://www.w3schools.com/js/js_conventions.asp
+
+<HTML guideline description>
+For this project, I follow the HTML5 syntax guidelines from W3Schools which emphasize writing clean, well-structured, and semantic HTML code. These guidelines include using lowercase element names, closing all HTML elements properly, placing attributes inside quotes, and organizing code in a readable format. By following these rules, the structure of the webpage becomes more consistent, easier to maintain, and compatible across different browsers.
+Alongside HTML, I follow the JavaScript Coding Conventions from W3Schools which promote best practices such as using meaningful variable names, consistent indentation, proper spacing, and clear commenting. These conventions help keep scripts easy to read and debug while also improving code reliability and reducing errors. Together, these guidelines ensure that both the HTML layout and JavaScript functionality meet good coding standards.
