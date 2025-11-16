@@ -1,0 +1,37 @@
+Q5.11 Determine the languages used to build the UI. 
+List all the languages used and describe what they 
+are used for. At least 1 paragraph for each description.
+
+HTML:
+HTML is the foundational language used to structure the 
+entire user interface of the movie application. It defines
+the layout of the page, including the movie list area, 
+search section, sort buttons, tabs, and the Add/ Update
+/ Delete forms. All input fields, buttons, containers, 
+headings, and sections are created using HTML elements.
+Without, HTML, the application would have no structure 
+because it provides the basic framework the browser relies 
+on to display all content and interactive elements.
+
+CSS:
+CSS is used to style and format the visual appearance of 
+the movie application. It controls the layout, colours, 
+spacing, fonts, alignment, and overall look and feel of 
+the user interface. CSS ensures that the movie cards are 
+arranged neatly, the tabs highlight when selected, and the 
+form sections appear organized and readable. It also helps
+create a consistent design across the entire application, 
+making it visually appealing and easier for users to navigate. 
+
+JavaScript:
+JavaScript provides the interactive behaviour and dynamic 
+functionality of the movie application. It handles actions
+such as searching, sorting, adding new movies, updating 
+records, deleting entries, and switching between tabs. 
+JavaScript reads user input, updates the movie list, 
+manipulates the DOM to reflect changes instantly, and 
+connects UI actions to the underlying MovieList class. 
+It enables the page to respond immediately to user actions
+without needing a page refresh. JavaScript is the core 
+programming logic behind the application making the UI 
+interactive and fully functional.
