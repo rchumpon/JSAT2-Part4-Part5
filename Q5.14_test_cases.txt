@@ -1,0 +1,176 @@
+UI Test Plan – My Movie App
+
+Test Case 1: Layout loads correctly
+Test Case 1.1: Page loads initial movie list
+Expected result: All 12 movies display as cards in the grid. 
+Each card has ID, title, year, rating.
+Actual result: UI loads and displays all 12 movies correctly.
+Pass/Fail: Pass
+
+Test Case 2: Buttons/ tabs switch content properly
+Test Case 2.1: User clicks Add tab
+Expected result: Add form appears. Other forms hidden. 
+The tab button becomes active.
+Actual result: Add form shows, others hide correctly.
+Pass/Fail: Pass
+
+Test Case 2.2: User switches between Update/ Delete/ Search
+Expected result: Only selected content visible.
+Actual result: All tabs switch correctly and highlight active tab.
+Pass/Fail: Pass
+
+Test Case 3: Searching by Title
+Test Case 3.1: Search by exact title
+Expected result: Searches “Doctor Strange” and returns 1 movie.
+Actual result: “Doctor Strange” returned as expected.
+Pass/Fail: Pass
+
+Test Case 3.2: Search by partial title
+Expected result: Returns multiple matches.
+Actual result: All movies containing “man” appeared correctly.
+Pass/Fail: Pass
+
+Test Case 3.3: Search with no matches
+Expected result: “No movies found”
+Actual result: “No movies found” appeared when no matches existed.
+Pass/Fail: Pass
+
+Test Case 3.4: Search by empty input
+Expected result: Full list shown.
+Actual result: All movies displayed when search cleared.
+Pass/Fail: Pass
+
+Test Case 4: Searching by ID
+Test Case 4.1: Search for ID 10
+Expected result: Finds 1 movie: Resident Evil.
+Actual result: Movie with ID 10 (Resident Evil) displayed correctly.
+Pass/Fail: Pass
+
+Test Case 4.2: Search for ID 45 which is not in the list.
+Expected result: No movie found
+Actual result: No movie found
+Pass/Fail: Pass
+
+Test Case 4.3: Search for non-numeric ID e.g., “abc”, “xyz”.
+Expected result: No movie found
+Actual result: No movie found
+Pass/Fail: Pass
+
+Test Case 5: Sorting by A-Z, Z-A, Rating
+Test Case 5.1: Sort A-Z
+Expected result: First movie should be "Alita: Battle Angel" 
+and last movie should be "The Girl with the Dragon Tattoo".
+Actual result: Movies display sorted alphabetically from A to Z.
+"Alita: Battle Angel" appeared first and "The Girl with the 
+Dragon Tattoo" appeared last.
+Pass/Fail: Pass
+
+Test Case 5.2: Sort Z-A
+Expected result: First movie should be "The Girl with the 
+Dragon Tattoo" and last movie should be "Alita: Battle Angel".
+Actual result: Movies display sorted alphabetically from 
+Z to A. "The Girl with the Dragon Tattoo" appeared first and
+"Alita: Battle Angel" appeared last.
+Pass/Fail: Pass
+
+Test Case 5.3: Sort by Rating (High to Low)
+Expected result: Spider Man : No Way Home with the highest 
+rating appears first and the others followed correctly.
+Actual result: Spider Man : No Way Home with the highest 
+rating appeared first and the others followed correctly.
+Pass/Fail: Pass
+
+Test Case 6: Add movie form
+Test Case 6.1: Add a valid movie and input:
+- Index: 13
+- Title: The Matrix
+- Year: 1999
+- Rating: 8.7
+Expected result: Movie count is 13. The last card shows a new 
+movie (The Matrix) and UI refreshes properly.
+Actual result: The movie “The Matrix” was successfully added and rendered.
+Pass/Fail: Pass
+
+Test Case 6.2: Add a movie with a missing field
+Expected result: The alert displays "All fields are required. 
+Please fill in every input.". The movie is not added 
+and grid remains unchanged.
+Actual result: The alert displayed "All fields are required. 
+Please fill in every input.". The movie was not added 
+and grid remained unchanged.
+Pass/Fail: Pass
+
+Test Case 6.3: Enter a non-numeric value in the Year
+or Rating input e.g., “abc”.
+Expected result: The alert displays "Year and Rating must be valid
+numbers.". The movie is not added and grid remains unchanged.
+Actual result: The alert displayed "Year and Rating must be valid 
+numbers.". The movie was not added and grid remained unchanged.
+Pass/Fail: Pass
+
+Test Case 7: Update movie form
+Test Case 7.1: Update a valid movie and input:
+- Index: 1
+- Title: Wicked
+- Year: 2024
+- Rating: 7.4
+Expected result: The first card updates immediately 
+and MovieList array is updated.
+Actual result: The movie “Wicked” was successfully 
+updated and rendered.
+Pass/Fail: Pass
+
+Test Case 7.2: Enter index 50 which is out of range
+Expected result: The alert displays "Invalid index. 
+Movie does not exist.". The movie is not updated 
+and grid remains unchanged.
+Actual result: The alert displayed "Invalid index. 
+Movie does not exist.". The movie was not updated 
+and grid remained unchanged.
+Pass/Fail: Pass
+
+Test Case 7.3: Enter an index and leave other fields empty
+Expected result: The alert displays "Title, Year, and 
+Rating are required.". The movie is not updated and 
+grid remains unchanged.
+Actual result: The alert displayed "Title, Year, 
+and Rating are required.". The movie was not updated and 
+grid remained unchanged.
+Pass/Fail: Pass
+
+Test Case 8: Delete movie form
+Test Case 8.1: Delete a valid movie and entering  index 1
+Expected result: Movie 1 is successfully deleted and the 
+list shrinks from 12 to 11 movies.
+Actual result: Movie 1 was successfully deleted and the 
+list shrunk from 12 to 11 movies.
+Pass/Fail: Pass
+
+Test Case 8.2: Enter index 50 which is an invalid index
+Expected result: The alert displays "Invalid index. No movie 
+exists at that position.". The movie is not deleted.
+Actual result: The alert displayed "Invalid index. No movie 
+exists at that position.". The movie was not deleted.
+Pass/Fail: Pass
+
+Test Case 8.3: Delete with empty input.
+Expected result: The alert displays "Please enter an 
+index to delete.". The movie is not deleted.
+Actual result: The alert displayed "Please enter an 
+index to delete.". The movie was not deleted.
+Pass/Fail: Pass
+
+Test Case 9: Movies render correctly in card format
+Test Case 9.1: Check movie card layout
+Expected result: Every card contains Index number, Title, 
+Year, Rating, and Star rating symbol. All cards format properly.
+Actual result: All cards showed correct layout and styling. 
+All cards contain Index number, Title, Year and star rating symbol.
+Pass/Fail: Pass
+
+Test Case 9.2: List clears correctly after sorting or searching.
+Expected result: Sorting and searching refreshes the UI 
+properly with no duplicates.
+Actual result: Sorting and searching refreshed the UI 
+properly with no duplicates.
+Pass/Fail: Pass
