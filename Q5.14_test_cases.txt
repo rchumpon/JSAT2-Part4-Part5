@@ -80,6 +80,11 @@ Actual result: Spider Man : No Way Home with the highest
 rating appeared first and the others followed correctly.
 Pass/Fail: Pass
 
+Test Case 5.4: Refresh button
+Expected result: All original movies are displayed in the grid again.
+Actual result: All original movies were displayed in the grid again.
+Pass/Fail: Pass
+
 Test Case 6: Add movie form
 Test Case 6.1: Add a valid movie and input:
 - Index: 13
@@ -175,9 +180,9 @@ Actual result: Sorting and searching refreshed the UI
 properly with no duplicates.
 Pass/Fail: Pass
 
-Test Case 10: Refresh button functionality
-Expected result: The refresh button clears all search inputs. The movie grid is reset to show all movies. 
-Actual result: The refresh button cleared all search inputs. The movie grid was reset to show all movies.
+Test Case 10: Clear button functionality
+Expected result: The Clear button clears all search inputs. The movie grid is reset to show all movies. 
+Actual result: The Clear button cleared all search inputs. The movie grid was reset to show all movies.
 Pass/Fail: Pass
 
 
