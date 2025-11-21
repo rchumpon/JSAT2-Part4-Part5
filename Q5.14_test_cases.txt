@@ -174,3 +174,10 @@ properly with no duplicates.
 Actual result: Sorting and searching refreshed the UI 
 properly with no duplicates.
 Pass/Fail: Pass
+
+Test Case 10: Refresh button functionality
+Expected result: The refresh button clears all search inputs. The movie grid is reset to show all movies. 
+Actual result: The refresh button cleared all search inputs. The movie grid was reset to show all movies.
+Pass/Fail: Pass
+
+
