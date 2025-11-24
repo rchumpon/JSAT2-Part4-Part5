@@ -1,0 +1,49 @@
+# JSAT2-Part5
+
+# My Movie App
+
+This app will allow the user to view and manipulate a list of movies.
+The movie contain a title, a year, and rating.
+
+## index.html
+
+This file will orignally hold my movieList hard coded in
+We will then slowly add in our JavaScript
+Starting with my CRUD forms
+
+## style.css
+
+This file will hold all my CSS for this app.
+
+# MovieList - Class
+
+## Attributes
+
+movieList - a list of movies
+rootId - the root element where the list is to appear
+
+## Methods
+
+movieRow - generates one row of the movieList
+genMovieList - generates all rows for the movielist for the to display
+genMovieSearchList - generates a movieList based on my search string
+removeElements - removes the movieList from the display
+refresh - refreshes the display
+add - Add a new movie to the list
+update - Update a movie in the list
+delete - Delete a movie in the list
+sortA2Z - Sort the list in ascending order and display the movieList
+sortZ2A - Sort the list in descending order and display the movieList
+sortRating - Sort movies by rating (highest to lowest)
+search - search the movieList by partial title and then display the results.
+searchId - search the movieList based on a search by Id
+
+# App.js
+
+This file holds the implementation of the MovieList class, event listeners and an array of movies
+It also contains JavaScript that creates some of the UI.
+
+## movieList.js
+
+This file will holder my Class definition for my MovieList class.
+It will contain the attributes and methods for this class.
