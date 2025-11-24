@@ -1,58 +1,25 @@
 const movies = [
-  {id: 1, title: "Alita: Battle Angel", year: 2019, rating: 7.3 },
-  {id: 2, title: "Bad Neighbours", year: 2014, rating: 6.3 },
-  {id: 3, title: "Doctor Strange", year: 2016, rating: 7.5 },
-  {id: 4, title: "Fast & Furious 6", year: 2013, rating: 7.0 },
-  {id: 5, title: "Harry Potter and the Deathly Hallows: Part 2", year: 2011, rating: 8.1},
-  {id: 6, title: "Mean Girls", year: 2004, rating: 7.1 },
-  {id: 7, title: "The Girl with the Dragon Tattoo", year: 2009, rating: 7.8 },
-  {id: 8, title: "John Wick: Chapter 3 - Parabellum", year: 2019, rating: 7.4 },
-  {id: 9, title: "Spider Man: No Way Home", year: 2021, rating: 8.2 },
-  {id: 10, title:"Resident Evil", year: 2002, rating: 6.6 },
-  {id: 11, title:"The Bourne Ultimatum", year: 2007, rating: 8.0},
-  {id: 12, title:"Kingsman: The Secret Service", year: 2014, rating: 7.7},
-];
-// Create a new MovieList object using the container with id = "list"
-// and the movies array as the data source
+    new MyMovie(1, "Harry Potter and the Philosopher's Stone", 2001, 7.7),
+    new MyMovie(2, "Harry Potter and the Chamber of Secrets", 2002, 7.5),
+    new MyMovie(3, "Harry Potter and the Prisoner of Azkaban", 2004, 7.9),
+    new MyMovie(4, "Harry Potter and the Goblet of Fire", 2005, 7.7),
+    new MyMovie(5, "Harry Potter and the Order of the Phoenix", 2007, 7.5),
+    new MyMovie(6, "Harry Potter and the Half-Blood Prince", 2009,7.6),
+    new MyMovie(7, "Harry Potter and the Deathly Hallows: Part 1", 2010, 7.7),
+    new MyMovie(8, "Harry Potter and the Deathly Hallows: Part 2", 2011, 8.1),
+    new MyMovie(9, "Fantastic Beasts and Where to Find Them", 2016, 7.2),
+    new MyMovie(10, "Fantastic Beasts: The Crimes of Grindelwald", 2018, 6.5),
+    new MyMovie(11, "Fantastic Beasts: The Secrets of Dumbledore", 2022, 6.2),
+    new MyMovie(12, "The Chronicles of Narnia: The Lion, the witch and the Wardrobe", 2005, 6.9),
+  ];
+
+// Create a new MovieList instance
 let movieList = new MovieList('list', movies);
-// Get the HTML element where movie cards will be displayed
-const movieGrid = document.getElementById("list");
-
-// Function to render movies as cards
-// If no list is provided, it will use the main movie list by default
-function renderMovies(list = movieList.movieList) {
-  // Clear any existing movies before re-rendering
-  movieGrid.innerHTML = ""; 
-  // If no movies exist, display a message instead
-  if (list.length === 0) {
-    movieGrid.innerHTML = "<p>No movies found.</p>";
-    return;
-  }
-    // Loop through the movie list and create a card for each movie
-    list.forEach((movie, index) => {
-    //  create a new div element to act as a movie card
-    const card = document.createElement("div");
-    // Add CSS class for styling
-    card.classList.add("movie-card");
-    // Insert movie data into the card
-    // index + 1 is used to show numbering starting from 1
-    card.innerHTML = `
-      <h3>${index + 1}. ${movie.title}</h3>
-      <small>Year: ${movie.year}</small>
-      <p class="rating">&#11088; ${movie.rating.toFixed(1)}</p>
-    `;
-    // Add the card into the movie grid container
-    movieGrid.appendChild(card);
-  });
-}
-
- // Initial render
-renderMovies(); 
-
+// Initial rendering
+movieList.genMovieList();
 
 // Search movie by Title
 function searchClick() {
-
   // Get the search element from the DOM
   let formElements = document.getElementById('form-list-control').elements;
   // Getting the text from the input element
@@ -60,7 +27,7 @@ function searchClick() {
   // Filter the movies using the text
   const filtered = movieList.movieList.filter(movie => movie.title.toLowerCase().includes(text.toLowerCase()));
   // Render the filtered movies
-  renderMovies(filtered);
+  movieList.genMovieSearchList(filtered);
 }
 
 // Search movie by ID
@@ -73,7 +40,7 @@ function searchIdClick() {
   // Filter the movies and convert ID to string to allow includes
   const filtered = movieList.movieList.filter(movie => movie.id.toString() === text);
   // Display the search results
-  renderMovies(filtered);
+  movieList.genMovieSearchList(filtered);
 
 }
 
@@ -84,24 +51,36 @@ function refreshClick() {
   // Clear all input fields in the form
   formElements.reset(); // reset() is built for HTML forms.
   // Re-render full movie list
-  renderMovies(movieList.movieList);
+  movieList.genMovieList();
 }
 
 // Sorting
 function a2zClick() {
   movieList.sortA2Z();
-  renderMovies(movieList.movieList);
+  movieList.genMovieList();
 }
 
 function z2aClick() {
   movieList.sortZ2A();
-  renderMovies(movieList.movieList);
+  movieList.genMovieList();
 }
 
 function sortRatingClick() {
   movieList.sortRating();
-  renderMovies(movieList.movieList);
+  movieList.genMovieList();
 }
+
+// Keep a copy of the original list
+const originalMovies = [...movies]; // make a copy of the initial array
+
+// New refresh function
+function refreshMovieList() {
+  // Restore the movieList to its original order
+  movieList.movieList = [...originalMovies];
+  // Re-render the movie list
+  movieList.genMovieList();
+}
+
 
 // CRUD operations
 // Create - Add
@@ -134,7 +113,7 @@ function addClick() {
   formElements.year.value = "";
   formElements.rating.value = "";
   // Refresh the movie list
-  renderMovies(movieList.movieList);
+  movieList.genMovieList();
 }
 
 // Update - Update
@@ -190,7 +169,7 @@ function updateClick() {
   formElements.year.value = "";
   formElements.rating.value = "";
   // Refresh the movie list
-  renderMovies(movieList.movieList);
+  movieList.genMovieList();
 }
 // Delete - Delete
 function deleteClick() {
@@ -224,7 +203,7 @@ function deleteClick() {
   // Clear the input fields
   indexElement.value = "";
   // Refresh the display
-  renderMovies(movieList.movieList);
+  movieList.genMovieList();
 }
 
 
@@ -265,7 +244,7 @@ function openForm(event, action) {
 // End of openForm()
 
 // Open a tab by default
-document.getElementById('defaultOpen').click();
+// document.getElementById('defaultOpen').click();
 
 // Footer - get Date and inject into the footer
 // Get the span from the dom to inject the date into

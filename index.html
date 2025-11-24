@@ -18,26 +18,28 @@
         <div class="mb-3">
           <input type="text" placeholder="Movie Title" name="search-string">
           <button type="button" onclick="searchClick()">Search</button>
-          <button type="button" onclick="refreshClick()">refresh</button>
         </div>
 
-        <div class="mb3">
+        <div class="mb-3">
           <input type="text" placeholder="Movie ID" name="search-id">
           <button type="button" onclick="searchIdClick()">Search</button>
-          <button type="button" onclick="refreshClick()">refresh</button>
+        </div>
+        <div class="refresh-btn mt-3">
+          <button type="button" onclick="refreshClick()">Clear</button>
         </div>
       </form>
+
     </section>
     <hr class="solid" />
   
-    
-    <section id="MovieList">
+    <section id="movieList">
       <h2 class="mt-3 mb-3">Sort Movies</h2>
       <!-- Buttons to run search and sort functions -->
         <button type="button" onclick="a2zClick()">Sort A - Z</button>
         <button type="button" onclick="z2aClick()">Sort Z - A</button>
         <button type="button" onclick="sortRatingClick()">Best Movies</button>
-      <h2 class="mt-3 mb-3">Movie List</h2>   
+        <button type="button" onclick="refreshMovieList()">Refresh</button>
+        <h2 class="mt-3 mb-3">Movie List</h2>   
       <div id="list"></div>
     </section>
     <hr class="solid" />
@@ -135,12 +137,7 @@
         </div>
       </footer>
       <!-- End of the footer -->
-
-
-
-
   <script src="./js/movieList.js"></script>
   <script src="./js/app.js"></script>
-  
 </body>
 </html>

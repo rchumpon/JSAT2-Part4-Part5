@@ -43,7 +43,6 @@ h2 {
   margin-bottom: 1rem;
 }
 
-
 input { 
   width: 700px;
   padding: .375rem .75rem;
@@ -75,13 +74,15 @@ button {
 
 button:hover {
   background-color: #444444;
-
 }
 
 #form-list-control {
   text-align: center;
 }
 
+.refresh-btn button {
+  width: 30%;
+}
 
 /* Movie Grid Layout */
 #list {
@@ -129,8 +130,13 @@ button:hover {
   color: #333;
 }
 
-
-
+.no-movies {
+  font-size: 1.2rem;
+  color: #0f1724;
+  text-align: center;
+  padding: 20px;
+  font-weight: bold;
+}
 
 hr.solid {
   border: none;

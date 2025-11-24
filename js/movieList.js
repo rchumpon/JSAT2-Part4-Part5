@@ -1,89 +1,88 @@
-class MovieList {
-  constructor(rootId, movieArray) {
-    this.rootId = rootId; // the html id of where the list is going
-    this.movieList = movieArray // the array of the movie that we wish to display
-    this.refresh();
+// Movie class
+class MyMovie {
+  constructor(id, title, year, rating) {
+    this.id = id;         // Unique ID of the movie
+    this.title = title;   // Movie title
+    this.year = year;     // Release Year
+    this.rating = rating; // Movie rating
   }
+}
 
+// Movie List Class
+class MovieList {
+    constructor(rootId, movieList) {
+      // ID of the HTML container where movie cards will be displayed
+      this.rootId = rootId; 
+      // Array of myMovie object
+      this.movieList = movieList;
+    }
+  
   // Methods
-  // movieRow - generate one row from the array
-  movieRow(index, title, year, rating) {
+  // Create one movie card
+  movieRow(index, movie) {
     // Get the parent element
-    const rootElement = document.getElementById(this.rootId)
+    const rootElement = document.getElementById(this.rootId);
+    // create a new div element for the movie card
+    const card = document.createElement("div");
+    // Add CSS class for styling
+    card.classList.add("movie-card");
 
-    // Creating the element for the DOM
-    const row = document.createElement('div');
-    const id = document.createElement('div')
-    const nameDiv = document.createElement('div');
-    const yearDiv = document.createElement('div');
-    const rateDiv = document.createElement('div')
-    
-    // Add content
-    id.textContent = `${index}.`;
-    nameDiv.textContent = title;
-    yearDiv.textContent = year;
-    rateDiv.textContent = rating;
-
-    // Add the class of row onto our row
-    row.classList.add('row');
-
-    // Append the elements to the row
-    // Build row
-    row.appendChild(id);
-    row.appendChild(nameDiv);
-    row.appendChild(yearDiv);
-    row.appendChild(rateDiv);
-
-    
-    // Append the row to the Dom (root element)
-    rootElement.appendChild(row);
+    // Insert movie data into the card
+    card.innerHTML = `
+      <h3>${index}. ${movie.title}</h3>
+      <small>Year: ${movie.year}</small>
+      <p class="rating">&#11088; ${movie.rating.toFixed(1)}</p>
+    `;
+    // Add the card to the container
+    rootElement.appendChild(card);
   }
   // End movieRow method
 
-  // Generate all rows in our movieList
+  // Generate full movie list as cards
   genMovieList() {
-    // Loop through the movieList
+    // Clear old content
+    this.removeElements();
+    // Get the HTML element where movie cards will be displayed
+    if (this.movieList.length === 0) {
+      document.getElementById(this.rootId).innerHTML = "<p>No movies found.</p>";
+      return;
+    }
+    // Loop through the movie list and create cards
     for (let i = 0; i < this.movieList.length; i++) {
       let movie = this.movieList[i];
       console.log(movie);
-      // Call the movieRow method to generate a row
-      this.movieRow(i + 1, movie.title, movie.year, movie.rating);
+      // Call the movieRow method to generate a card
+      // Pass i + 1 so numbering starts at 1
+      this.movieRow(i + 1, movie);
     }
   }
   // End genAnimeList method
 
-  // Generate a movie list based on our search string
+  // Generate a filtered list (used by search)
   genMovieSearchList(list) {
     // Remove all elements (old movie list) from the display
     this.removeElements();
+    if (list.length === 0) {
+      document.getElementById(this.rootId).innerHTML = `<p class="no-movies"> &#127915; No movies found. &#127915;</p>`;
+      return;
+    }
     // Generate a new list, from the list which was passed through
-    // Loop through every movie object in the array
+    // Loop through filtered list and create cards
     for (let i = 0; i < list.length; i++) {
       // Retrieves the current movie object in the loop.
       let movie = list[i];
-      // Call the movieRow method to generate and display one row of movie information in the UI
-      this.movieRow(i + 1, movie.title, movie.year, movie.rating);
+      // Numbering starts at 1
+      this.movieRow(i + 1, movie);
     }
   }
   // End of genMovieSearchList(list) method
 
-  // Remove all list elements from the DOM
+  // Remove all movie cards from the DOM
   removeElements() {
     // Get the parent container element
     const rootElement = document.getElementById(this.rootId);
-
-    // Get all the HTML elements with the class name of "row"
-    const childNodes = document.getElementsByClassName('row');
-    // childNodes is an array of htmlElements.
-    // See how many children do we have?
-    const len = childNodes.length - 1;
-    // Loop through the childNodes and remove them from the DOM
-    for (let i = len; i >= 0; i--) {
-      // Pull out the last child
-      const child = childNodes[i];
-      // Remove this child from the DOM
-      rootElement.removeChild(child);
-    }
+    // Clear any existing movies before re-rendering
+    rootElement.innerHTML = ""
   }
 
   // Refresh the list
@@ -99,11 +98,12 @@ class MovieList {
   add(index, title, year, rating) {
     // Add a new movie to the end of the list
     this.movieList.push({id: index, title: title, year: year, rating: rating});
+    // Re-render the list
     this.refresh();
   }
   // End of add method
   
-  // Update a movie
+  // Update an existing movie
   update(index, title, year, rating) {
     this.movieList[index].title = title;
     this.movieList[index].year = year;
@@ -129,9 +129,7 @@ class MovieList {
   // Compare 2 values, A will go before B
   // Sort in ascending order
   sortA2Z() {
-    this.movieList.sort(function (a, b) {
-      return a.title.localeCompare(b.title);
-    }); 
+    this.movieList.sort((a, b) => a.title.localeCompare(b.title));
     this.refresh();
   }
 
@@ -169,20 +167,13 @@ class MovieList {
     this.genMovieSearchList(shortList);
   }
 
+  // Search by exact movie ID
   searchId(movieId) {
-    
-    let selectedId = [];
-
-    for (let movie of this.movieList) {
-      if (movie.id.includes(movieId)) {
-        selectedId.push(movie);
-      }
-    }
-    this.genMovieSearchList(shortList);
+    const selectedId = this.movieList.filter(movie => movie.id === Number(movieId));
+    this.genMovieSearchList(selectedId);
   }
-
-  
 }
+
 
 
 
